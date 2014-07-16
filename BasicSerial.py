@@ -12,7 +12,7 @@ def sending(seri):
 
 def receiving(seri):
     while True:
-        s = seri.read(1000000)
+        s = seri.readline()
         sys.stdout.write(s)
         sys.stdout.flush()
 
@@ -27,7 +27,7 @@ try:
     # This is here because of an error in my laptop serial stack or whatever
     ser = serial.Serial(args.serial_port, 9600, timeout=0)
     ser.close()
-    ser = serial.Serial(args.serial_port, 115200, timeout=0)
+    ser = serial.Serial(args.serial_port, 115200, timeout=1)
 except:
     print("serial open failure")
 
