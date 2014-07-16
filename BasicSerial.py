@@ -7,16 +7,15 @@ import argparse
 def sending(seri):
     while True:
         blah = sys.stdin.read(2).strip()
-        for i in range(0, 30):
-            print(blah)
+        print(blah)
         seri.write(blah)
         seri.flush()
 
 def receiving(seri):
     while True:
         s = seri.readline()
-        sys.stdout.write(s)
-        sys.stdout.flush()
+        # sys.stdout.write(s)
+        # sys.stdout.flush()
 
 parser = argparse.ArgumentParser(description="Simple Serial reader / writer")
 parser.add_argument('-s', '--serial', dest='serial_port',
