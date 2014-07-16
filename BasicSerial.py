@@ -27,7 +27,7 @@ try:
     # This is here because of an error in my laptop serial stack or whatever
     ser = serial.Serial(args.serial_port, 9600, timeout=0)
     ser.close()
-    ser = serial.Serial(args.serial_port, 115200, timeout=1)
+    ser = serial.Serial(args.serial_port, 115200, timeout=5)
 except:
     print("serial open failure")
 
