@@ -6,10 +6,9 @@ import argparse
 
 def sending(seri):
     while True:
-        blah = sys.stdin.read(1)
-        if 'r' in blah:
-            seri.write('r')
-            seri.flush()
+        blah = sys.stdin.read(2).strip()
+        for i in range(0, 30):
+            print(blah)
         seri.write(blah)
         seri.flush()
 
