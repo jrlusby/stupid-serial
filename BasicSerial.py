@@ -6,16 +6,15 @@ import argparse
 
 def sending(seri):
     while True:
-        blah = sys.stdin.read(2).strip()
-        print(blah)
+        blah = raw_input().strip()
         seri.write(blah)
         seri.flush()
 
 def receiving(seri):
     while True:
         s = seri.readline()
-        # sys.stdout.write(s)
-        # sys.stdout.flush()
+        sys.stdout.write(s)
+        sys.stdout.flush()
 
 parser = argparse.ArgumentParser(description="Simple Serial reader / writer")
 parser.add_argument('-s', '--serial', dest='serial_port',
@@ -32,7 +31,7 @@ try:
 except:
     print("serial open failure")
 
-t1 = threading.Thread(target=sending, args = (ser))
+t1 = threading.Thread(target=sending, args = (ser,))
 t1.daemon = True
 t1.start()
 try:
