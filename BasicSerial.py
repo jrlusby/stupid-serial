@@ -4,17 +4,24 @@ import sys
 import threading
 import argparse
 
+dontprint = False
+
 def sending(seri):
     while True:
         blah = raw_input().strip()
+        if blah == 'takeabreak':
+            dontprint = True
+        if blah == 'wakeup':
+            dontprint = False
         seri.write(blah)
         seri.flush()
 
 def receiving(seri):
     while True:
         s = seri.readline()
-        sys.stdout.write(s)
-        sys.stdout.flush()
+        if not dontPrint:
+            sys.stdout.write(s)
+            sys.stdout.flush()
 
 parser = argparse.ArgumentParser(description="Simple Serial reader / writer")
 parser.add_argument('-s', '--serial', dest='serial_port',
