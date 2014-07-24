@@ -7,6 +7,7 @@ import argparse
 dontprint = False
 
 def sending(seri):
+    global dontprint
     while True:
         blah = raw_input().strip()
         if blah == '0':
@@ -19,7 +20,7 @@ def sending(seri):
 def receiving(seri):
     while True:
         s = seri.readline()
-        if not dontPrint:
+        if not dontprint:
             sys.stdout.write(s)
             sys.stdout.flush()
 
