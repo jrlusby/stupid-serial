@@ -9,9 +9,9 @@ dontprint = False
 def sending(seri):
     while True:
         blah = raw_input().strip()
-        if blah == 'takeabreak':
+        if blah == '0':
             dontprint = True
-        if blah == 'wakeup':
+        if blah == '1':
             dontprint = False
         seri.write(blah)
         seri.flush()
