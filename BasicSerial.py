@@ -3,19 +3,22 @@ import serial
 import sys
 import threading
 import argparse
+import getch
+
+getchr = getch._Getch()
 
 dontprint = False
 
 def sending(seri):
-    global dontprint
-    while True:
-        blah = raw_input().strip()
+    while blah != 'q':
+        blah = getchr()
         if blah == '0':
             dontprint = True
         if blah == '1':
             dontprint = False
-        seri.write(blah)
-        seri.flush()
+        if blah != 'q':
+            seri.write(blah)
+            seri.flush()
 
 def receiving(seri):
     while True:
